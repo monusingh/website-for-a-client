@@ -1,0 +1,62 @@
+{% extends "registration/bse.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+<div class="container marketing">
+
+
+      <div class="featurette">
+
+  {% if form.errors %}
+  <p class="errors"><font color = "red">Please correct the errors below: {{ form.non_field_errors }}</font></p>
+  {% endif %}
+
+  <h1><u>Create an account</u></h1>
+  
+  <form method="post" action="" class="wide">
+	{% csrf_token %}
+    <p>
+      <label for="id_username">Username:</label>
+      {% if form.username.errors %}
+        <p class="errors"><font color = "red">{{ form.username.errors.as_text }}</font></p>
+      {% endif %}
+      {{ form.username }}
+    </p>
+    <p>
+      <label for="id_email">Email address:</label>
+      {% if form.email.errors %}
+        <p class="errors"><font color = "red">{{ form.email.errors.as_text }}</font></p>
+      {% endif %}
+      {{ form.email }}
+    </p>
+    <p>
+      <label for="id_password1">Password:</label>
+      {% if form.password1.errors %}
+        <p class="errors"><font color = "red">{{ form.password1.errors.as_text }}</font></p>
+      {% endif %}
+      {{ form.password1 }}
+    </p>
+    <p>
+      <label for="id_password2">Password (type again to catch typos):</label>
+      {% if form.password2.errors %}
+        <p class="errors"><font color = "red">{{ form.password2.errors.as_text }}</font></p>
+      {% endif %}
+      {{ form.password2 }}
+    </p>
+<br>
+    <p class="submit"><input type="submit" value="Register &rarr;"></p>
+  </form>
+  
+<br><br><br><br>
+<p><b>Fill out the form to the left (all fields are required), and your
+account will be created; 
+<p>you'll be sent an email with instructions on how
+to finish your registration.</b></p>
+<br>
+
+<p><b>We'll only use your email to send you signup instructions. </b></p>
+<br><br>
+</div>
+</div>
+{% endblock %}
